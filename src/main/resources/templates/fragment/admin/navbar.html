@@ -1,0 +1,113 @@
+<!-- fragments/navbar.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking Meeting Room </title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav" th:fragment="navbar">
+    <a class="navbar-brand" th:href="@{/}">Meet Room</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Main Menu"
+                th:classappend="${menuActive == ''} ? 'active'">
+                <a class="nav-link" th:href="@{/admin}">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Main Menu</span>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="User Data"
+                th:classappend="${menuActive == 'userdata'} ? 'active'">
+                <a class="nav-link" th:href="@{/user-data}">
+                    <i class="fa fa-fw fa-users"></i>
+                    <span class="nav-link-text">User Data</span>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Tables"
+                th:classappend="${menuActive == 'facilitydata'} ? 'active'">
+                <a class="nav-link" th:href="@{/facility-data}">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Facility Data</span>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Manage Room"
+                th:classappend="${menuActive == 'manageroom'} ? ' active'">
+                <a class="nav-link" th:href="@{/manage-room}">
+                    <i class="fa fa-fw fa-building"></i>
+                    <span class="nav-link-text">Manage Room</span>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="List Booking Room"
+                th:classappend="${menuActive == 'listbooking'} ? 'active'">
+                <a class="nav-link" th:href="@{/list-booking}">
+                    <i class="fa fa-fw fa-file-text"></i>
+                    <span class="nav-link-text">List Booking Room</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-users"></i>
+                    <span class="nav-link-text">Menu Users</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li class="nav-item"
+                        data-toggle="tooltip"
+                        data-placement="right"
+                        title="Tables"
+                        th:classappend="${menuActive == 'bookingrom'} ? 'active'">
+                        <a class="nav-link" th:href="@{/booking-room}">
+                            <i class="fa fa-fw fa-pencil"></i>
+                            <span class="nav-link-text">Booking Room</span>
+                        </a>
+                    </li>
+                    <li class="nav-item"
+                        data-toggle="tooltip"
+                        data-placement="right"
+                        title="Tables"
+                        th:classappend="${menuActive == 'activity'} ? 'active'">
+                        <a class="nav-link" th:href="@{/activity}">
+                            <i class="fa fa-fw fa-wrench"></i>
+                            <span class="nav-link-text">Activity</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+</body>
+</html>
