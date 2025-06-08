@@ -6,42 +6,43 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 
-    @GetMapping("/admin")
+    @GetMapping("")
     public String index(Model model) {
         model.addAttribute("menuActive", "main");
         return "admin/main";
     }
 
-    @GetMapping("/user-data")
+    @GetMapping("/userdata")
     public String userdata(Model model) {
-        model.addAttribute("menuActive", "user-data");
+        model.addAttribute("menuActive", "userdata");
         return "admin/user-data";
     }
 
-    @GetMapping("/facility-data")
+    @GetMapping("/facilitydata")
     public String facilitydata(Model model) {
-        model.addAttribute("menuActive", "facility-data");
+        model.addAttribute("menuActive", "facilitydata");
         return "admin/facility-data";
     }
 
-    @GetMapping("/manage-room")
+    @GetMapping("/manageroom")
     public String manageroom(Model model) {
-        model.addAttribute("menuActive","manage-room");
+        model.addAttribute("menuActive","manageroom");
         return "admin/manage-room";
     }
 
-    @GetMapping("/list-booking")
+    @GetMapping("/listbooking")
     public String listbooking(Model model) {
-        model.addAttribute("menuActive", "list-booking");
+        model.addAttribute("menuActive", "listbooking");
         return "admin/list-booking";
     }
 
-    @GetMapping("/booking-room")
-    public String bookingroom(Model model) {
-        model.addAttribute("menuActive", "booking-room");
-        return "admin/booking-room";
+    @GetMapping("/booking")
+    public String bookingRoom(Model model) {
+        model.addAttribute("menuActive", "booking");
+        return "admin/booking";
     }
 
     @GetMapping("/activity")
@@ -49,4 +50,5 @@ public class AdminController {
         model.addAttribute("menuActive", "activity");
         return "admin/activity";
     }
+
 }

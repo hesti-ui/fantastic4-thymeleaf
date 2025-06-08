@@ -1,9 +1,6 @@
 <!-- fragments/navbar.html -->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Booking Meeting Room </title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav" th:fragment="navbar">
     <a class="navbar-brand" th:href="@{/}">Meet Room</a>
@@ -29,7 +26,7 @@
                 data-placement="right"
                 title="User Data"
                 th:classappend="${menuActive == 'userdata'} ? 'active'">
-                <a class="nav-link" th:href="@{/user-data}">
+                <a class="nav-link" th:href="@{/admin/userdata}">
                     <i class="fa fa-fw fa-users"></i>
                     <span class="nav-link-text">User Data</span>
                 </a>
@@ -39,7 +36,7 @@
                 data-placement="right"
                 title="Tables"
                 th:classappend="${menuActive == 'facilitydata'} ? 'active'">
-                <a class="nav-link" th:href="@{/facility-data}">
+                <a class="nav-link" th:href="@{/admin/facilitydata}">
                     <i class="fa fa-fw fa-wrench"></i>
                     <span class="nav-link-text">Facility Data</span>
                 </a>
@@ -49,7 +46,7 @@
                 data-placement="right"
                 title="Manage Room"
                 th:classappend="${menuActive == 'manageroom'} ? ' active'">
-                <a class="nav-link" th:href="@{/manage-room}">
+                <a class="nav-link" th:href="@{/admin/manageroom}">
                     <i class="fa fa-fw fa-building"></i>
                     <span class="nav-link-text">Manage Room</span>
                 </a>
@@ -59,7 +56,7 @@
                 data-placement="right"
                 title="List Booking Room"
                 th:classappend="${menuActive == 'listbooking'} ? 'active'">
-                <a class="nav-link" th:href="@{/list-booking}">
+                <a class="nav-link" th:href="@{/admin/listbooking}">
                     <i class="fa fa-fw fa-file-text"></i>
                     <span class="nav-link-text">List Booking Room</span>
                 </a>
@@ -74,8 +71,8 @@
                         data-toggle="tooltip"
                         data-placement="right"
                         title="Tables"
-                        th:classappend="${menuActive == 'bookingrom'} ? 'active'">
-                        <a class="nav-link" th:href="@{/booking-room}">
+                        th:classappend="${menuActive == 'booking'} ? 'active'">
+                        <a class="nav-link" th:href="@{/admin/booking}">
                             <i class="fa fa-fw fa-pencil"></i>
                             <span class="nav-link-text">Booking Room</span>
                         </a>
@@ -85,7 +82,7 @@
                         data-placement="right"
                         title="Tables"
                         th:classappend="${menuActive == 'activity'} ? 'active'">
-                        <a class="nav-link" th:href="@{/activity}">
+                        <a class="nav-link" th:href="@{/admin/activity}">
                             <i class="fa fa-fw fa-wrench"></i>
                             <span class="nav-link-text">Activity</span>
                         </a>

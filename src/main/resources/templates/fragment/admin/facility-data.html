@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <body>
-<head>
-    <title>Facility Data</title>
-</head>
 <div class="content-wrapper" th:fragment="facility-data">
         <div class="container-fluid">
             <!-- Breadcrumbs-->
@@ -37,8 +34,8 @@
                                 <td>Chair</td>
                                 <td>12</td>
                                 <td>
-                                    <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#detail-modal">
-                                        <i class="fa fa-pencil-square-o me-2"></i> Detail</button>
+                                    <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#detail-modal">
+                                        <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                 </td>
                             </tr>
@@ -47,10 +44,7 @@
                     </div>
                 </div>
             </div>
-            <!-- /.container-fluid-->
-            <!-- /.content-wrapper-->
-            <!-- Scroll to Top Button-->
-            <!-- Logout Modal-->
+
             <!-- Modal Detail Booking -->
             <div class="modal fade" id="detail-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -87,6 +81,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Modal Tambah Data -->
             <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
