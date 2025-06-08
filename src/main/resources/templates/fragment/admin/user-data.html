@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Booking Meeting Room </title>
-</head>
-<body>
 <div class="content-wrapper" th:fragment="user-data">
         <div class="container-fluid">
             <!-- Breadcrumbs-->
@@ -28,20 +22,36 @@
                                 <th>No. Telp</th>
                                 <th>Password</th>
                                 <th>Departement</th>
-                                <th>Position</th>
+                                <th>Jabatan</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>2025001</td>
+                                <td>DIKA2001</td>
                                 <td>Robert</td>
                                 <td>robet@gmail.com</td>
-                                <td>+12 023 899 098</td>
+                                <td>+62839101918</td>
                                 <td>rahasia89q02934</td>
                                 <td>Accounting</td>
-                                <td>Section Head</td>
+                                <td>Manager</td>
+                                <td>
+                                    <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit-modal">
+                                        <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash me-2"></i> Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>DIKA2002</td>
+                                <td>Albert</td>
+                                <td>albert@gmail.com</td>
+                                <td>+62837761918</td>
+                                <td>scret89q02934</td>
+                                <td>IT</td>
+                                <td>Assitant Manager</td>
                                 <td>
                                     <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit-modal">
                                         <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
@@ -55,51 +65,40 @@
                 </div>
             </div>
 
-            <!-- Modal Edit Data -->
-            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <form id="formEdit">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalEditLabel">Edit User Data</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="userId1" name="userId" required placeholder="NIP">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="userName1" name="userName" required placeholder="User Name">
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" id="email1" name="email" required placeholder="E-Mail">
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" id="noTelp1" name="quantity" required placeholder="Phone Nomber">
-                                </div>
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="password1" placeholder="Password">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" style="cursor: pointer;" onclick="togglePassword()">
-                                            <i class="fa fa-eye" id="toggleIcon1"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="depart" class="form-control" id="departement1" name="quantity" required placeholder="Departement">
-                                </div>
-                                <div class="form-group">
-                                    <input type="pos" class="form-control" id="jabatan1" name="quantity" required placeholder="Jabatan">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
-                            </div>
+            <!-- Modal Detail Booking -->
+            <div class="modal fade" id="detail-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Detail Booking</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </form>
+                        <div class="modal-body">
+                            <p id="p1">
+                                Booking Id : B1221<br>
+                                Mon, 5 May 2025<br>
+                                Time: 13:00-14:00<br>
+                            </p>
+                            <p id="p2">
+                                Room Meeting 5 - (10 People)<br>
+                                Location: Floor 3<br>
+                                Facility:<br>
+                            </p>
+                            <ul>
+                                <li>Table - 1</li>
+                                <li>Chair - 15pcs</li>
+                                <li>LCD - 1</li>
+                                <li>White Board - 1</li>
+                                <li>Phone - 1</li>
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">Confirm</button>
+                            <button type="button" class="btn btn-danger">Cancel</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -109,48 +108,65 @@
                     <form id="formTambah">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalTambahLabel">Tambah User Data</h5>
+                                <h5 class="modal-title" id="modalTambahLabel">Add User Data</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
+                                    <label for="userId">NIP</label>
                                     <input type="text" class="form-control" id="userId" name="userId" required placeholder="NIP">
                                 </div>
                                 <div class="form-group">
+                                    <label for="userName">User Name</label>
                                     <input type="text" class="form-control" id="userName" name="userName" required placeholder="User Name">
                                 </div>
                                 <div class="form-group">
+                                    <label for="email">E-Mail</label>
                                     <input type="email" class="form-control" id="email" name="email" required placeholder="E-Mail">
                                 </div>
                                 <div class="form-group">
+                                    <label for="noTelp">Phone Number</label>
                                     <input type="tel" class="form-control" id="noTelp" name="quantity" required placeholder="Phone Nomber">
                                 </div>
-                                <div class="input-group">
-                                    <input type="password" class="form-control" id="password" placeholder="Password">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text" style="cursor: pointer;" onclick="togglePassword()">
-                                            <i class="fa fa-eye" id="toggleIcon"></i>
-                                        </span>
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" placeholder="Password">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" style="cursor: pointer;" onclick="togglePassword()">
+                                                <i class="fa fa-eye" id="toggleIcon"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="depart" class="form-control" id="departement" name="quantity" required placeholder="Departement">
+                                    <label for="departement">Departement</label>
+                                    <input type="text" class="form-control" id="departement" name="quantity" required placeholder="Departement">
                                 </div>
                                 <div class="form-group">
-                                    <input type="pos" class="form-control" id="jabatan" name="quantity" required placeholder="Jabatan">
+                                    <label for="jabatan">Jabatan</label>
+                                    <input type="text" class="form-control" id="jabatan" name="quantity" required placeholder="Jabatan">
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary">Add</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-
         </div>
-    </div>
-</body>
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById("password");
+            const toggleIcon = document.getElementById("toggleIcon");
+
+            const isPassword = passwordInput.type === "password";
+            passwordInput.type = isPassword ? "text" : "password";
+            toggleIcon.classList.toggle("fa-eye");
+            toggleIcon.classList.toggle("fa-eye-slash");
+        }
+    </script>
+</div>

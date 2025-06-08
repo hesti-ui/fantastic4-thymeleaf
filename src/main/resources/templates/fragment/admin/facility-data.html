@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<body>
 <div class="content-wrapper" th:fragment="facility-data">
         <div class="container-fluid">
             <!-- Breadcrumbs-->
@@ -33,6 +30,18 @@
                                 <td>F01</td>
                                 <td>Chair</td>
                                 <td>12</td>
+                                <td>
+                                    <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#detail-modal">
+                                        <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>R02</td>
+                                <td>F02</td>
+                                <td>LCD</td>
+                                <td>1</td>
                                 <td>
                                     <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#detail-modal">
                                         <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
@@ -88,7 +97,7 @@
                     <form id="formTambah">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalTambahLabel">Tambah Data Fasilitas</h5>
+                                <h5 class="modal-title" id="modalTambahLabel">Add Facility Data</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
@@ -113,8 +122,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Simpan</button>
+                                <button type="submit" class="btn btn-primary">Add</button>
                             </div>
                         </div>
                     </form>
@@ -122,4 +130,3 @@
             </div>
         </div>
 </div>
-</body>
