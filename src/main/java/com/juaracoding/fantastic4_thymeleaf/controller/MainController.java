@@ -12,8 +12,8 @@ public class MainController {
 
     @GetMapping("")
     public String index(Model model) {
-        model.addAttribute("menuActive", "main");
-        return "admin/main";
+        model.addAttribute("menuActive", "home-admin");
+        return "admin/home-admin";
         }
 
 //        @GetMapping("/admin")
