@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav" th:fragment="navbar">
-    <a class="navbar-brand" th:href="@{/}">Meet Room</a>
+    <a class="navbar-brand" th:href="@{/}">Booking Meeting Room</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -10,7 +10,7 @@
             <li class="nav-item"
                 data-toggle="tooltip"
                 data-placement="right"
-                title="Tables"
+                title="Main Menu"
                 th:classappend="${menuActive == ''} ? 'active'">
                 <a class="nav-link" th:href="@{/user}">
                     <i class="fa fa-fw fa-dashboard"></i>
@@ -20,7 +20,7 @@
             <li class="nav-item"
                 data-toggle="tooltip"
                 data-placement="right"
-                title="Tables"
+                title="Booking Room"
                 th:classappend="${menuActive == 'userbooking'} ? 'active'">
                 <a class="nav-link" th:href="@{/user/booking}">
                     <i class="fa fa-fw fa-pencil"></i>
@@ -30,7 +30,7 @@
             <li class="nav-item"
                 data-toggle="tooltip"
                 data-placement="right"
-                title="Tables"
+                title="Activity"
                 th:classappend="${menuActive == 'useractivity'} ? 'active'">
                 <a class="nav-link" th:href="@{/user/activity}">
                     <i class="fa fa-fw fa-history"></i>
@@ -40,7 +40,7 @@
             <li class="nav-item"
                 data-toggle="tooltip"
                 data-placement="right"
-                title="Tables"
+                title="Change Password"
                 th:classappend="${menuActive == 'changepassword'} ? 'active'">
                 <a class="nav-link" th:href="@{/user/changepassword}">
                     <i class="fa fa-fw fa-lock"></i>

@@ -1,163 +1,110 @@
 <div class="content-wrapper" th:fragment="user-data">
-        <div class="container-fluid">
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="#">Users</a>
-                </li>
-                <li class="breadcrumb-item active">My Users</li>
-            </ol>
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fa fa-table"></i> Users Data</div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>No.</th>
-                                <th>NIP</th>
-                                <th>User Name</th>
-                                <th>E-Mail</th>
-                                <th>No. Telp</th>
-                                <th>Password</th>
-                                <th>Departement</th>
-                                <th>Jabatan</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>DIKA2001</td>
-                                <td>Robert</td>
-                                <td>robet@gmail.com</td>
-                                <td>+62839101918</td>
-                                <td>rahasia89q02934</td>
-                                <td>Accounting</td>
-                                <td>Manager</td>
-                                <td>
-                                    <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit-modal">
-                                        <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash me-2"></i> Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>DIKA2002</td>
-                                <td>Albert</td>
-                                <td>albert@gmail.com</td>
-                                <td>+62837761918</td>
-                                <td>scret89q02934</td>
-                                <td>IT</td>
-                                <td>Assitant Manager</td>
-                                <td>
-                                    <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#edit-modal">
-                                        <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
-                                    <button type="submit" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash me-2"></i> Delete</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Users</a>
+            </li>
+            <li class="breadcrumb-item active">My Users</li>
+        </ol>
 
-            <!-- Modal Detail Booking -->
-            <div class="modal fade" id="detail-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Detail Booking</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p id="p1">
-                                Booking Id : B1221<br>
-                                Mon, 5 May 2025<br>
-                                Time: 13:00-14:00<br>
-                            </p>
-                            <p id="p2">
-                                Room Meeting 5 - (10 People)<br>
-                                Location: Floor 3<br>
-                                Facility:<br>
-                            </p>
-                            <ul>
-                                <li>Table - 1</li>
-                                <li>Chair - 15pcs</li>
-                                <li>LCD - 1</li>
-                                <li>White Board - 1</li>
-                                <li>Phone - 1</li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Confirm</button>
-                            <button type="button" class="btn btn-danger">Cancel</button>
-                        </div>
-                    </div>
-                </div>
+        <!-- DataTables -->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-table"></i> User Data
             </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>NIP</th>
+                            <th>User Name</th>
+                            <th>E-Mail</th>
+                            <th>No. Telp</th>
+                            <th>Password</th>
+                            <th>Departement</th>
+                            <th>Jabatan</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-            <!-- Modal Tambah Data -->
-            <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <form id="formTambah">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalTambahLabel">Add User Data</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="userId">NIP</label>
-                                    <input type="text" class="form-control" id="userId" name="userId" required placeholder="NIP">
-                                </div>
-                                <div class="form-group">
-                                    <label for="userName">User Name</label>
-                                    <input type="text" class="form-control" id="userName" name="userName" required placeholder="User Name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">E-Mail</label>
-                                    <input type="email" class="form-control" id="email" name="email" required placeholder="E-Mail">
-                                </div>
-                                <div class="form-group">
-                                    <label for="noTelp">Phone Number</label>
-                                    <input type="tel" class="form-control" id="noTelp" name="quantity" required placeholder="Phone Nomber">
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <div class="input-group">
-                                        <input type="password" class="form-control" id="password" placeholder="Password">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text" style="cursor: pointer;" onclick="togglePassword()">
-                                                <i class="fa fa-eye" id="toggleIcon"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="departement">Departement</label>
-                                    <input type="text" class="form-control" id="departement" name="quantity" required placeholder="Departement">
-                                </div>
-                                <div class="form-group">
-                                    <label for="jabatan">Jabatan</label>
-                                    <input type="text" class="form-control" id="jabatan" name="quantity" required placeholder="Jabatan">
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">Add</button>
-                            </div>
-                        </div>
-                    </form>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
+
+        <!-- Modal Tambah Data -->
+        <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form id="formTambah">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTambahLabel">Add User Data</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <form th:object="${user}" th:action="@{/user/save}" method="post">
+                            <div class="form-group">
+                                <label for="userId">NIP</label>
+                                <input type="text" class="form-control" id="userId" name="userId" required
+                                       placeholder="NIP">
+                            </div>
+                            <div class="form-group">
+                                <label for="userName">User Name</label>
+                                <input type="text" class="form-control" id="userName" name="userName" required
+                                       placeholder="User Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-Mail</label>
+                                <input type="email" class="form-control" id="email" name="email" required
+                                       placeholder="E-Mail">
+                            </div>
+                            <div class="form-group">
+                                <label for="noTelp">Phone Number</label>
+                                <input type="tel" class="form-control" id="noTelp" name="quantity" required
+                                       placeholder="Phone Nomber">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <div class="input-group-append">
+                                            <span class="input-group-text" style="cursor: pointer;"
+                                                  onclick="togglePassword()">
+                                                <i class="fa fa-eye" id="toggleIcon"></i>
+                                            </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="departement">Departement</label>
+                                <input type="text" class="form-control" id="departement" name="departement" required
+                                       placeholder="Departement">
+                            </div>
+                            <div class="form-group">
+                                <label for="jabatan">Jabatan</label>
+                                <input type="text" class="form-control" id="jabatan" name="jabatan" required
+                                       placeholder="Jabatan">
+                            </div>
+                            </form>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <script>
         function togglePassword() {
             const passwordInput = document.getElementById("password");
@@ -170,3 +117,33 @@
         }
     </script>
 </div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+        $("#formTambah").submit(function(event) {
+              event.preventDefault(); //prevent default action
+              let post_url = $(this).attr("action"); //get form action url
+              let request_method = $(this).attr("method"); //get form GET/POST method
+              let form_data = $(this).serialize(); //Encode form elements for submission
+              $.ajax({
+                  url: post_url,
+                  type: request_method,
+                  data: form_data
+                }).done(function(response) { //
+                let pattern = /50c9a8c2b1cb45799d8f0db5f8449c65/i;
+                let result = response.match(pattern);
+                if(result)
+                {
+                    $("#server-results-add").html(response);
+                }
+                else
+                {
+                    $('#add1').modal('hide');
+                    confirm("DATA BERHASIL DISIMPAN");
+                    window.location = "/user";// ini refresh page nya
+                }
+                });
+            });
+
+    /*]]>*/
+</script>

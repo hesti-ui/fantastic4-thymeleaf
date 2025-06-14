@@ -1,3 +1,7 @@
+.navbar-sidenav .nav-item img {
+        border-radius: 10px;
+        }
+
 html {
   position: relative;
   min-height: 100%;

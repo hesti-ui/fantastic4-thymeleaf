@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav" th:fragment="navbar">
-    <a class="navbar-brand" th:href="@{/}">Meet Room</a>
+    <a class="navbar-brand" th:href="@{/}">Booking Meeting Room</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
             <li class="nav-item"
                 data-toggle="tooltip"
                 data-placement="right"
-                title="Tables"
+                title="Facility Data"
                 th:classappend="${menuActive == 'facilitydata'} ? 'active'">
                 <a class="nav-link" th:href="@{/admin/facilitydata}">
                     <i class="fa fa-fw fa-wrench"></i>
@@ -57,7 +57,7 @@
                     <span class="nav-link-text">List Booking Room</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User Menu">
                 <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
                     <i class="fa fa-fw fa-users"></i>
                     <span class="nav-link-text">Menu Users</span>
@@ -66,7 +66,7 @@
                     <li class="nav-item"
                         data-toggle="tooltip"
                         data-placement="right"
-                        title="Tables"
+                        title="Booking Room"
                         th:classappend="${menuActive == 'booking'} ? 'active'">
                         <a class="nav-link" th:href="@{/admin/booking}">
                             <i class="fa fa-fw fa-pencil"></i>
@@ -76,7 +76,7 @@
                     <li class="nav-item"
                         data-toggle="tooltip"
                         data-placement="right"
-                        title="Tables"
+                        title="Activity"
                         th:classappend="${menuActive == 'activity'} ? 'active'">
                         <a class="nav-link" th:href="@{/admin/activity}">
                             <i class="fa fa-fw fa-history"></i>

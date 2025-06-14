@@ -7,15 +7,16 @@
             </li>
             <li class="breadcrumb-item active">My Activity</li>
         </ol>
+
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Data Activity</div>
+                <i class="fa fa-table"></i> Activity</div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <table class="table table-bordered" width="100%" cellspacing="0">
                         <thead>
                         <tr>
-                            <th>No.</th>
+                            <th>No</th>
                             <th>Date</th>
                             <th>Booking ID</th>
                             <th>Room ID</th>
@@ -25,46 +26,13 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
-                            <th>27/06/2025</th>
-                            <td>BOOK2323</td>
-                            <td>R01</td>
-                            <td>Done</td>
+                            <th>1</th>
+                            <td>27/06/2025</td>
+                            <td>2331</td>
+                            <td>R2001</td>
+                            <td>On Proses</td>
                             <td>
-                                <button type="submit" class="btn btn-success w-50 btn-sm" data-toggle="modal" data-target="#detail-modal">
-                                    <i class="fa fa-pencil-square-o me-2"></i> Detail</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <th>01/07/2025</th>
-                            <td>BOOK2324</td>
-                            <td>R02</td>
-                            <td>Pending</td>
-                            <td>
-                                <button type="submit" class="btn btn-success w-50 btn-sm" data-toggle="modal" data-target="#detail-modal">
-                                    <i class="fa fa-pencil-square-o me-2"></i> Detail</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <th>05/07/2025</th>
-                            <td>BOOK2323</td>
-                            <td>R03</td>
-                            <td>Cancel</td>
-                            <td>
-                                <button type="submit" class="btn btn-success w-50 btn-sm" data-toggle="modal" data-target="#detail-modal">
-                                    <i class="fa fa-pencil-square-o me-2"></i> Detail</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <th>07/07/2025</th>
-                            <td>BOOK2324</td>
-                            <td>R04</td>
-                            <td>Approve</td>
-                            <td>
-                                <button type="submit" class="btn btn-success w-50 btn-sm" data-toggle="modal" data-target="#detail-modal">
+                                <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#detail-modal">
                                     <i class="fa fa-pencil-square-o me-2"></i> Detail</button>
                             </td>
                         </tr>
@@ -73,5 +41,43 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal Detail Booking -->
+        <div class="modal fade" id="detail-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail Booking</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p id="p1">
+                            Booking Id : B1221<br>
+                            Mon, 5 May 2025<br>
+                            Time: 13:00-14:00<br>
+                        </p>
+                        <p id="p2">
+                            Room Meeting 5 - (10 People)<br>
+                            Location: Floor 3<br>
+                            Facility:<br>
+                        </p>
+                        <ul>
+                            <li>Table - 1</li>
+                            <li>Chair - 15pcs</li>
+                            <li>LCD - 1</li>
+                            <li>White Board - 1</li>
+                            <li>Phone - 1</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Confirm</button>
+                        <button type="button" class="btn btn-danger">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
