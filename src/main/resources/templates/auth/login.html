@@ -29,33 +29,37 @@
           </div>
 
           <!--                    End Of Captcha-->
-          <div class="row">
-            <div class="col-4">
-              <img th:src="*{'data:realCaptcha/jpg;base64,'+realCaptcha}">
+          <div class="row mb-3">
+            <div class="col-md-4 text-center">
+              <img th:src="*{'data:image/jpg;base64,'+realCaptcha}" alt="CAPTCHA Image" class="img-fluid rounded border">
             </div>
           </div>
-          <div>
-            <span class="fas fa-key">ENTER CAPTCHA</span>
+
+          <div class="mb-2">
+            <label for="captchaInput" class="form-label"> Enter CAPTCHA </label>
           </div>
-          <div class="form-field d-flex align-items-center">
-            <span class="fas fa-key"></span>
-            <input type="hidden" th:field="*{hiddenCaptcha}"/>
-            <input type="text" th:field="*{captcha}" class="form-control"/>
+
+          <div class="form-group d-flex align-items-center mb-2">
+            <input type="hidden" th:field="*{hiddenCaptcha}" />
+            <input type="text" th:field="*{captcha}" class="form-control me-2" id="captchaInput" placeholder="Enter the captcha" required />
           </div>
+
+          <!-- Error messages -->
           <div>
             <ul class="error-ul">
-              <li th:each="err : ${#fields.errors('captcha')}" th:text="${err}" class="error" />
+              <li th:each="err : ${#fields.errors('captcha')}" th:text="${err}" class="error"></li>
             </ul>
-            <p id="errorCaptcha" class="error"/>
-            <ul   class="error-ul">
-              <li th:if="${captchaMessage!=null}" th:text="${captchaMessage}" class="error" />
+            <p id="errorCaptcha" class="error"></p>
+            <ul class="error-ul">
+              <li th:if="${captchaMessage != null}" th:text="${captchaMessage}" class="error"></li>
             </ul>
           </div>
+
           <!--                    End Of Captcha-->
 
           <button id="btn-login" type="button" class="btn btn-primary btn-block">Login</button>
         </form>
-        <div class="text-center">
+        <div class="text-center mt-3">
           <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
         </div>
       </div>

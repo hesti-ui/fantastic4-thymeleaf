@@ -24,28 +24,25 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>R01</td>
-                                <td>F01</td>
-                                <td>Chair</td>
-                                <td>12</td>
-                                <td>
-                                    <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#detail-modal">
-                                        <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>R02</td>
-                                <td>F02</td>
-                                <td>LCD</td>
-                                <td>1</td>
-                                <td>
-                                    <button type="submit" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#detail-modal">
-                                        <i class="fa fa-pencil-square-o me-2"></i> Edit</button>
-                                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <tr th:each="facility, iterStat : ${listFacility}">
+                                <td th:text="${iterStat.count}">1</td>
+                                <td></td>
+                                <td th:text="${facility.['id']}">Facility ID</td>
+                                <td th:text="${facility.['namaFasilitas']}">Facility Name</td>
+                                <td th:text="${facility.['jumlah']}">Quantity</td>
+                                <td>   <!-- Aksi: Edit / Delete -->
+                                    <button class="btn btn-sm btn-warning btn-edit"
+                                            th:attr="data-id=${facility['id']},
+                                            data-namaFasilitas=${facility['namaFasilitas']},
+                                            data-jumlah=${facility['jumlah']}">
+                                        Edit
+                                    </button>
+                                    <form th:action="@{/facility/delete/{id}(id=${facility['id']})}" method="post" style="display:inline;">
+                                        <input type="hidden" name="_method" value="delete"/>
+                                        <button type="submit" class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Are you sure to delete?')">Delete
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             </tbody>
@@ -54,45 +51,8 @@
                 </div>
             </div>
 
-            <!-- Modal Detail Booking -->
-            <div class="modal fade" id="detail-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Detail Booking</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p id="p1">
-                                Booking Id : B1221<br>
-                                Mon, 5 May 2025<br>
-                                Time: 13:00-14:00<br>
-                            </p>
-                            <p id="p2">
-                                Room Meeting 5 - (10 People)<br>
-                                Location: Floor 3<br>
-                                Facility:<br>
-                            </p>
-                            <ul>
-                                <li>Table - 1</li>
-                                <li>Chair - 15pcs</li>
-                                <li>LCD - 1</li>
-                                <li>White Board - 1</li>
-                                <li>Phone - 1</li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary">Confirm</button>
-                            <button type="button" class="btn btn-danger">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Modal Tambah Data -->
-            <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel" aria-hidden="true">
+            <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <form id="formTambah">
                         <div class="modal-content">
@@ -105,20 +65,25 @@
                             <div class="modal-body">
                                 <!-- Form Input -->
                                 <div class="form-group">
-                                    <label for="roomId">Room ID</label>
-                                    <input type="text" class="form-control" id="roomId" name="roomId" required>
+                                    <label for="ruanganId">Room</label>
+                                    <select class="form-control" id="ruanganId" name="room.id" required>
+                                        <option value="">-- Select Room --</option>
+                                        <option th:each="room : ${listRoom}"
+                                                th:value="${room.id}"
+                                                th:text="${room.namaRuangan}"></option>
+                                    </select>
                                 </div>
                                 <div class="form-group">
-                                    <label for="facilityId">Facility ID</label>
-                                    <input type="text" class="form-control" id="facilityId" name="facilityId" required>
+                                    <label for="id">Facility ID</label>
+                                    <input type="text" class="form-control" id="id" name="id" required placeholder="Facility ID">
                                 </div>
                                 <div class="form-group">
-                                    <label for="facilityName">Facility Name</label>
-                                    <input type="text" class="form-control" id="facilityName" name="facilityName" required>
+                                    <label for="namaFasilitas">Facility Name</label>
+                                    <input type="text" class="form-control" id="namaFasilitas" name="namaFasilitas" required placeholder="Facility Name">
                                 </div>
                                 <div class="form-group">
-                                    <label for="quantity">Quantity</label>
-                                    <input type="number" class="form-control" id="quantity" name="quantity" required>
+                                    <label for="jumlah">Quantity</label>
+                                    <input type="number" class="form-control" id="jumlah" name="jumlah" required placeholder="Quantity">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -130,3 +95,62 @@
             </div>
         </div>
 </div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+        $("#formTambah").submit(function(event) {
+            event.preventDefault(); // Cegah submit default
+
+            let post_url = $(this).attr("action");     // URL endpoint tujuan
+            let request_method = $(this).attr("method"); // Method POST
+            let form_data = $(this).serialize();         // Serialisasi data form
+
+            $.ajax({
+                url: post_url,
+                type: request_method,
+                data: form_data
+            }).done(function(response) {
+                let pattern = /50c9a8c2b1cb45799d8f0db5f8449c65/i;
+                let result = response.match(pattern);
+
+                if(result) {
+                    $("#server-results-add").html(response); // tampilkan pesan error jika ada
+                } else {
+                    $('#modalTambah').modal('hide'); // tutup modal tambah
+                    confirm("DATA BERHASIL DISIMPAN"); // notifikasi
+                    window.location = "/facility"; // redirect atau reload
+                }
+            });
+        });
+    /*]]>*/
+</script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+        $("#formEdit").submit(function(event) {
+            event.preventDefault(); // Mencegah submit default form
+
+            let post_url = $(this).attr("action");     // URL tujuan (form action)
+            let request_method = $(this).attr("method"); // Method (POST/PUT)
+            let form_data = $(this).serialize();         // Ambil data form
+
+            $.ajax({
+                url: post_url,
+                type: request_method,
+                data: form_data
+            }).done(function(response) {
+                // Cek response apakah cocok dengan pola tertentu (opsional)
+                let pattern = /50c9a8c2b1cb45799d8f0db5f8449c65/i;
+                let result = response.match(pattern);
+
+                if (result) {
+                    $("#server-results-edit").html(response); // tampilkan error ke elemen tertentu
+                } else {
+                    $('#modalEdit').modal('hide'); // tutup modal edit
+                    confirm("DATA BERHASIL DIUBAH"); // notif
+                    window.location = "/facility"; // redirect atau refresh halaman
+                }
+            });
+        });
+/*]]>*/
+</script>

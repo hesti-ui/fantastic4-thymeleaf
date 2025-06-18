@@ -1,13 +1,14 @@
 package com.juaracoding.fantastic4_thymeleaf.httpclient;
 
 
-import com.juaracoding.fantastic4_thymeleaf.dto.validation.ValUserDTO;
+import com.juaracoding.fantastic4_thymeleaf.dto.validation.ValFasilitasDTO;
+import jakarta.validation.Valid;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(name = "userdata-service", url = "http://localhost:8080/user")
-public interface UserDataService {
+@FeignClient(name = "facilitydata-service", url = "http://localhost:8080/facility")
+public interface FacilityDataService {
 
     @GetMapping
     public ResponseEntity<Object> findAll(@RequestHeader("Authorization") String token);
@@ -24,7 +25,7 @@ public interface UserDataService {
 
     @PostMapping
     public ResponseEntity<Object> save(@RequestHeader("Authorization") String token,
-                                       @RequestBody ValUserDTO valUserDTO);
+                                       @RequestBody @Valid ValFasilitasDTO valUserDTO);
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findById(
@@ -33,7 +34,7 @@ public interface UserDataService {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> update( @RequestHeader("Authorization") String token,
-                                          @RequestBody ValUserDTO valUserDTO,
+                                          @RequestBody @Valid ValFasilitasDTO valUserDTO,
                                           @PathVariable String id);
 
     @DeleteMapping("/{id}")

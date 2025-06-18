@@ -22,7 +22,7 @@
                 data-placement="right"
                 title="User Data"
                 th:classappend="${menuActive == 'userdata'} ? 'active'">
-                <a class="nav-link" th:href="@{/admin/userdata}">
+                <a class="nav-link" th:href="@{/user}">
                     <i class="fa fa-fw fa-users"></i>
                     <span class="nav-link-text">User Data</span>
                 </a>
@@ -32,7 +32,7 @@
                 data-placement="right"
                 title="Facility Data"
                 th:classappend="${menuActive == 'facilitydata'} ? 'active'">
-                <a class="nav-link" th:href="@{/admin/facilitydata}">
+                <a class="nav-link" th:href="@{/facility}">
                     <i class="fa fa-fw fa-wrench"></i>
                     <span class="nav-link-text">Facility Data</span>
                 </a>
@@ -42,7 +42,7 @@
                 data-placement="right"
                 title="Manage Room"
                 th:classappend="${menuActive == 'manageroom'} ? ' active'">
-                <a class="nav-link" th:href="@{/admin/manageroom}">
+                <a class="nav-link" th:href="@{/manage-room}">
                     <i class="fa fa-fw fa-building"></i>
                     <span class="nav-link-text">Manage Room</span>
                 </a>
@@ -54,7 +54,17 @@
                 th:classappend="${menuActive == 'listbooking'} ? 'active'">
                 <a class="nav-link" th:href="@{/admin/listbooking}">
                     <i class="fa fa-fw fa-file-text"></i>
-                    <span class="nav-link-text">List Booking Room</span>
+                    <span class="nav-link-text">List Booking</span>
+                </a>
+            </li>
+            <li class="nav-item"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Approval Booking Room"
+                th:classappend="${menuActive == 'approvebooking'} ? 'active'">
+                <a class="nav-link" th:href="@{/admin/approvebooking}">
+                    <i class="fa fa-fw fa-check-square"></i>
+                    <span class="nav-link-text">Approve Booking</span>
                 </a>
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User Menu">
@@ -83,6 +93,16 @@
                             <span class="nav-link-text">Activity</span>
                         </a>
                     </li>
+                    <li class="nav-item"
+                        data-toggle="tooltip"
+                        data-placement="right"
+                        title="Change Password"
+                        th:classappend="${menuActive == 'changepassword'} ? 'active'">
+                        <a class="nav-link" th:href="@{/admin/changepassword}">
+                            <i class="fa fa-fw fa-lock"></i>
+                            <span class="nav-link-text">Change Password</span>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -96,7 +116,7 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                <a class="nav-link" href="/login">
                     <i class="fa fa-fw fa-sign-out"></i>Logout</a>
             </li>
         </ul>

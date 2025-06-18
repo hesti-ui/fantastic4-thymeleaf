@@ -1,0 +1,51 @@
+<div class="content-wrapper" th:fragment="approve-booking">
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="#">Approval Booking Room</a>
+            </li>
+            <li class="breadcrumb-item active">My Approval Booking Room</li>
+        </ol>
+
+        <!-- content -->
+        <div class="card">
+            <div class="card-body">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-table"></i> Table Approve</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Booking ID</th>
+                                    <th>Date</th>
+                                    <th>Room Name</th>
+                                    <th>User Name</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <th>1</th>
+                                    <td>2331</td>
+                                    <td>27/06/2025</td>
+                                    <td>Ruang Inspirasi</td>
+                                    <td>Albert</td>
+                                    <td>On Process</td>
+                                    <td>
+                                        <button type="submit" class="btn btn-success btn-sm" data-toggle="modal" data-target="#detail-modal">
+                                            <i class="fa fa-pencil-square-o me-2"></i> Detail</button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

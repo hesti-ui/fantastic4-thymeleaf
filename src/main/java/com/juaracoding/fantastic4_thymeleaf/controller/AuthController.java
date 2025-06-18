@@ -48,10 +48,8 @@ public class AuthController {
 //        Boolean isValid = false;
 //        if(OtherConfig.getEnableAutomationTesting().equals("y")){
 //            isValid = loginDTO.getCaptcha().equals(strAnswer);
-//            System.out.println("Captcha Mode Otomatis: " + isValid);
 //        }else{
 //            isValid = BcryptImpl.verifyHash(loginDTO.getCaptcha(),strAnswer);
-//            System.out.println("Captcha Mode Manual: " + isValid);
 //        }
 //
 //        if(result.hasErrors() || !isValid){

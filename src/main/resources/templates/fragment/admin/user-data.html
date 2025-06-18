@@ -1,5 +1,6 @@
 <div class="content-wrapper" th:fragment="user-data">
     <div class="container-fluid">
+        <div th:if="${errorMessage}" class="alert alert-danger" th:text="${errorMessage}"></div>
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
@@ -23,15 +24,41 @@
                             <th>User Name</th>
                             <th>E-Mail</th>
                             <th>No. Telp</th>
-                            <th>Password</th>
                             <th>Departement</th>
                             <th>Jabatan</th>
                             <th>Action</th>
                         </tr>
                         </thead>
-                        <tbody>
 
+                        <tbody>
+                        <tr th:each="user, iterStat : ${listUser}">
+                            <td th:text="${iterStat.count}">1</td>
+                            <td th:text="${user['id']}">NIP</td>
+                            <td th:text="${user['nama']}">User Name</td>
+                            <td th:text="${user['email']}">E-Mail</td>
+                            <td th:text="${user['no-telp']}">No. Telp</td>
+                            <td th:text="${user['departemen']}">Departement</td>
+                            <td th:text="${user['jabatan']}">Jabatan</td>
+
+                            <td>   <!-- Aksi: Edit / Delete -->
+                            <button class="btn btn-sm btn-warning btn-edit"
+                                    th:attr="data-id=${user['id']},
+                                             data-username=${user['nama']},
+                                             data-email=${user['email']},
+                                             data-noTelp=${user['noTelp']},
+                                             data-departemen=${user['departemen']},
+                                             data-jabatan=${user['jabatan']}">
+                                     Edit
+                            </button>
+                                <form th:action="@{/user/delete/{id}(id=${user['id']})}" method="post" style="display:inline;">
+                                    <input type="hidden" name="_method" value="delete"/>
+                                    <button type="submit" class="btn btn-sm btn-danger"
+                                            onclick="return confirm('Are you sure to delete?')">Delete
+                                    </button>
+                                </form>
+                        </tr>
                         </tbody>
+
                     </table>
                 </div>
             </div>
@@ -41,8 +68,8 @@
         <div class="modal fade" id="modalTambah" tabindex="-1" role="dialog" aria-labelledby="modalTambahLabel"
              aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <form id="formTambah">
-                    <div class="modal-content">
+                <form id="formTambah" th:object="${data}" th:action="@{/user}" method="post">
+                <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalTambahLabel">Add User Data</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
@@ -51,15 +78,14 @@
                         </div>
 
                         <div class="modal-body">
-                            <form th:object="${user}" th:action="@{/user/save}" method="post">
                             <div class="form-group">
-                                <label for="userId">NIP</label>
-                                <input type="text" class="form-control" id="userId" name="userId" required
+                                <label for="id">NIP</label>
+                                <input type="text" class="form-control" id="id" name="id" required
                                        placeholder="NIP">
                             </div>
                             <div class="form-group">
-                                <label for="userName">User Name</label>
-                                <input type="text" class="form-control" id="userName" name="userName" required
+                                <label for="nama">User Name</label>
+                                <input type="text" class="form-control" id="nama" name="nama" required
                                        placeholder="User Name">
                             </div>
                             <div class="form-group">
@@ -69,24 +95,23 @@
                             </div>
                             <div class="form-group">
                                 <label for="noTelp">Phone Number</label>
-                                <input type="tel" class="form-control" id="noTelp" name="quantity" required
-                                       placeholder="Phone Nomber">
+                                <input type="tel" class="form-control" id="noTelp" name="noTelp" required
+                                       placeholder="Phone Number">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
                                 <div class="input-group">
-                                    <input type="password" class="form-control" id="password" placeholder="Password">
+                                    <input type="password" class="form-control" id="password" name="password" required placeholder="Password">
                                     <div class="input-group-append">
-                                            <span class="input-group-text" style="cursor: pointer;"
-                                                  onclick="togglePassword()">
-                                                <i class="fa fa-eye" id="toggleIcon"></i>
-                                            </span>
+                                        <span class="input-group-text" style="cursor: pointer;" onclick="togglePassword()">
+                                            <i class="fa fa-eye" id="toggleIcon"></i>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="departement">Departement</label>
-                                <input type="text" class="form-control" id="departement" name="departement" required
+                                <label for="departemen">Departement</label>
+                                <input type="text" class="form-control" id="departemen" name="departemen" required
                                        placeholder="Departement">
                             </div>
                             <div class="form-group">
@@ -94,9 +119,7 @@
                                 <input type="text" class="form-control" id="jabatan" name="jabatan" required
                                        placeholder="Jabatan">
                             </div>
-                            </form>
                         </div>
-
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
@@ -104,7 +127,53 @@
                 </form>
             </div>
         </div>
+
+        <!-- Modal Edit Data -->
+        <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form id="formEdit" method="post" th:action="@{/user}">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditLabel">Edit User Data</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <input type="hidden" id="editUserId" name="id">
+                            <div class="form-group">
+                                <label for="editUserName">User Name</label>
+                                <input type="text" class="form-control" id="editUserName" name="nama" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editEmail">E-Mail</label>
+                                <input type="email" class="form-control" id="editEmail" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editNoTelp">Phone Number</label>
+                                <input type="tel" class="form-control" id="editNoTelp" name="noTelp" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editDepartement">Departement</label>
+                                <input type="text" class="form-control" id="editDepartement" name="departemen" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editJabatan">Jabatan</label>
+                                <input type="text" class="form-control" id="editJabatan" name="jabatan" required>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
     <script>
         function togglePassword() {
             const passwordInput = document.getElementById("password");
@@ -121,29 +190,59 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
         $("#formTambah").submit(function(event) {
-              event.preventDefault(); //prevent default action
-              let post_url = $(this).attr("action"); //get form action url
-              let request_method = $(this).attr("method"); //get form GET/POST method
-              let form_data = $(this).serialize(); //Encode form elements for submission
-              $.ajax({
-                  url: post_url,
-                  type: request_method,
-                  data: form_data
-                }).done(function(response) { //
+            event.preventDefault(); // Cegah submit default
+
+            let post_url = $(this).attr("action");     // URL endpoint tujuan
+            let request_method = $(this).attr("method"); // Method POST
+            let form_data = $(this).serialize();         // Serialisasi data form
+
+            $.ajax({
+                url: post_url,
+                type: request_method,
+                data: form_data
+            }).done(function(response) {
                 let pattern = /50c9a8c2b1cb45799d8f0db5f8449c65/i;
                 let result = response.match(pattern);
-                if(result)
-                {
-                    $("#server-results-add").html(response);
-                }
-                else
-                {
-                    $('#add1').modal('hide');
-                    confirm("DATA BERHASIL DISIMPAN");
-                    window.location = "/user";// ini refresh page nya
-                }
-                });
-            });
 
+                if(result) {
+                    $("#server-results-add").html(response); // tampilkan pesan error jika ada
+                } else {
+                    $('#modalTambah').modal('hide'); // tutup modal tambah
+                    confirm("DATA BERHASIL DISIMPAN"); // notifikasi
+                    window.location = "/user"; // redirect atau reload
+                }
+            });
+        });
     /*]]>*/
 </script>
+
+<script script th:inline="javascript">
+    /*<![CDATA[*/
+        $("#formEdit").submit(function(event) {
+            event.preventDefault(); // Mencegah submit default form
+
+            let post_url = $(this).attr("action");     // URL tujuan (form action)
+            let request_method = $(this).attr("method"); // Method (POST/PUT)
+            let form_data = $(this).serialize();         // Ambil data form
+
+            $.ajax({
+                url: post_url,
+                type: request_method,
+                data: form_data
+            }).done(function(response) {
+                // Cek response apakah cocok dengan pola tertentu (opsional)
+                let pattern = /50c9a8c2b1cb45799d8f0db5f8449c65/i;
+                let result = response.match(pattern);
+
+                if (result) {
+                    $("#server-results-edit").html(response); // tampilkan error ke elemen tertentu
+                } else {
+                    $('#modalEdit').modal('hide'); // tutup modal edit
+                    confirm("DATA BERHASIL DIUBAH"); // notif
+                    window.location = "/user"; // redirect atau refresh halaman
+                }
+            });
+        });
+/*]]>*/
+</script>
+
