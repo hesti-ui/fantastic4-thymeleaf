@@ -13,6 +13,10 @@ public class ValUserDTO {
             message = "User ID tidak boleh kosong. Contoh yang benar : LWF1997")
     private String id;
 
+    @Pattern(regexp = "^([a-z0-9\\.]{8,16})$",
+            message = "Format Huruf kecil ,numeric dan titik saja min 8 max 16 karakter, ex : paulch.1234")
+    private String username;
+
     /*Nama lengkap user, hanya huruf dan spasi, 4-50 karakter*/
     @NotNull
     @Pattern(regexp ="^[a-zA-Z\\s]{4,50}$",
@@ -51,10 +55,9 @@ public class ValUserDTO {
     @Pattern(regexp = "^[A-Za-z0-9 ]+$", message = "Jabatan hanya boleh berisi huruf, angka, dan spasi. Contoh: Manager, Supervisor IT, Staff 1")
     private String jabatan;
 
-    @NotNull(message = "Akses Wajib Dipilih")
-    private RelAksesDTO akses;
+    //    @NotNull(message = "Akses Wajib Dipilih")
+//    private RelAksesDTO akses;
 
-    /*Getter dan Setter UserID*/
 
     public String getId() {
         return id;
@@ -64,7 +67,14 @@ public class ValUserDTO {
         this.id = id;
     }
 
-    /*Getter dan Setter Nama*/
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getNama() {
         return nama;
     }
@@ -72,7 +82,7 @@ public class ValUserDTO {
     public void setNama(String nama) {
         this.nama = nama;
     }
-    /*Getter dan Setter Email*/
+
     public String getEmail() {
         return email;
     }
@@ -80,7 +90,7 @@ public class ValUserDTO {
     public void setEmail(String email) {
         this.email = email;
     }
-    /*Getter dan Setter noTelp*/
+
     public String getNoTelp() {
         return noTelp;
     }
@@ -88,7 +98,7 @@ public class ValUserDTO {
     public void setNoTelp(String noTelp) {
         this.noTelp = noTelp;
     }
-    /*Getter dan Setter Password*/
+
     public String getPassword() {
         return password;
     }
@@ -96,7 +106,7 @@ public class ValUserDTO {
     public void setPassword(String password) {
         this.password = password;
     }
-    /*Getter dan Setter Departemen*/
+
     public String getDepartemen() {
         return departemen;
     }
@@ -104,7 +114,7 @@ public class ValUserDTO {
     public void setDepartemen(String departemen) {
         this.departemen = departemen;
     }
-    /*Getter dan Setter Jabatan*/
+
     public String getJabatan() {
         return jabatan;
     }
@@ -113,11 +123,11 @@ public class ValUserDTO {
         this.jabatan = jabatan;
     }
 
-    public RelAksesDTO getAkses() {
-        return akses;
-    }
-
-    public void setAkses(RelAksesDTO akses) {
-        this.akses = akses;
-    }
+//    public RelAksesDTO getAkses() {
+//        return akses;
+//    }
+//
+//    public void setAkses(RelAksesDTO akses) {
+//        this.akses = akses;
+//    }
 }
