@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Verify Regis</title>
+  <!-- Bootstrap core CSS-->
+  <link th:href="@{/vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+  <link th:href="@{/css/sb-admin.css}" rel="stylesheet">
+
+</head>
+
+<body class="bg-light">
+  <div class="container">
+    <div class="card card-login mx-auto mt-5">
+      <div class="card-header text-center">Verify Registrasi</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input class="form-control" id="inputEmail" type="email" aria-describedby="emailHelp" placeholder="Enter email address">
+          </div>
+          <div class="form-group">
+            <label for="inputOTP">OTP</label>
+            <input class="form-control" id="inputOTP" type="text" aria-describedby="otpHelp" placeholder="Enter OTP">
+          </div>
+          <div class="form-group">
+            <label for="inputNewpassword">New Password</label>
+            <input class="form-control" id="inputNewpassword" type="password" placeholder="Enter New Password">
+          </div>
+          <a class="btn btn-primary btn-block" th:href="@{/login}">Confirm</a>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+  <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/vendor/jquery-easing/jquery.easing.min.js}"></script>
+</body>
+
+</html>

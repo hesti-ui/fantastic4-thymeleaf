@@ -13,7 +13,7 @@
 <body class="bg-light">
   <div class="container">
     <div class="card card-login mx-auto mt-5">
-      <div class="card-header text-center fs-4">Login</div>
+      <div class="card-header text-center">Login</div>
       <div class="card-body">
 
         <form id="form-loginz"
@@ -60,7 +60,8 @@
           <button id="btn-login" type="button" class="btn btn-primary btn-block">Login</button>
         </form>
         <div class="text-center mt-3">
-          <a class="d-block small" href="forgot-password.html">Forgot Password?</a>
+          <a class="d-block small mt-3" th:href="@{/auth/regis}">Register an Account</a>
+          <a class="d-block small mt-3" th:href="@{/auth/verify-regis}">Verify Registration</a>
         </div>
       </div>
     </div>

@@ -59,13 +59,14 @@ public class UserDataController {
             Map<String,Object> map = (Map<String, Object>) response.getBody();
             List<Map<String, Object>> listData = (List<Map<String, Object>>) map.get("data");
             model.addAttribute("listUser", listData);
+            model.addAttribute("data", new ValUserDTO());
             GlobalFunction.setGlobalAttribute(model,request,"USER");
         }catch (Exception e){
             e.printStackTrace();
             return "redirect:/3314&5";
         }
         model.addAttribute("menuActive", "userdata");
-        return "/admin/user-data";
+        return "admin/user-data";
     }
 
     @GetMapping("/err/{err}")

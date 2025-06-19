@@ -64,7 +64,7 @@ public class FacilityDataController {
             e.printStackTrace();
             return "redirect:/3314&5";
         }
-        model.addAttribute("menuActive", "userdata");
+        model.addAttribute("menuActive", "facilitydata");
         return "/admin/facility-data";
     }
 

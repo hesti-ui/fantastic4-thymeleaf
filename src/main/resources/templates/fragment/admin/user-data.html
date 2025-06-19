@@ -41,15 +41,15 @@
                             <td th:text="${user['jabatan']}">Jabatan</td>
 
                             <td>   <!-- Aksi: Edit / Delete -->
-                            <button class="btn btn-sm btn-warning btn-edit"
-                                    th:attr="data-id=${user['id']},
+                                <button class="btn btn-sm btn-warning btn-edit"
+                                        th:attr="data-id=${user['id']},
                                              data-username=${user['nama']},
                                              data-email=${user['email']},
-                                             data-noTelp=${user['noTelp']},
+                                             data-no-telp=${user['no-telp']},
                                              data-departemen=${user['departemen']},
                                              data-jabatan=${user['jabatan']}">
-                                     Edit
-                            </button>
+                                    Edit
+                                </button>
                                 <form th:action="@{/user/delete/{id}(id=${user['id']})}" method="post" style="display:inline;">
                                     <input type="hidden" name="_method" value="delete"/>
                                     <button type="submit" class="btn btn-sm btn-danger"
@@ -69,7 +69,7 @@
              aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <form id="formTambah" th:object="${data}" th:action="@{/user}" method="post">
-                <div class="modal-content">
+                    <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalTambahLabel">Add User Data</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
@@ -179,7 +179,6 @@
             </div>
         </div>
     </div>
-
     <script>
         function togglePassword() {
             const passwordInput = document.getElementById("password");
@@ -250,5 +249,17 @@
             });
         });
 /*]]>*/
+</script>
+
+<script>
+    $(document).on("click", ".btn-edit", function () {
+        $('#editUserId').val($(this).data('id'));
+        $('#editUserName').val($(this).data('username'));
+        $('#editEmail').val($(this).data('email'));
+        $('#editNoTelp').val($(this).data('no-telp'));
+        $('#editDepartement').val($(this).data('departemen'));
+        $('#editJabatan').val($(this).data('jabatan'));
+        $('#modalEdit').modal('show');
+    });
 </script>
 

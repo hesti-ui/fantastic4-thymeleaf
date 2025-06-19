@@ -28,7 +28,7 @@
                         <tbody>
                         <tr th:each="room, iterStat : ${listRoom}">
                             <td th:text="${iterStat.count}">1</td>
-                            <td th:text="${room.id}">Room ID</td>
+                            <td th:text="${room.id}">Room Id</td>
                             <td th:text="${room.namaRuangan}">Room Name</td>
                             <td th:text="${room.minKapasitas}">Min Capacity</td>
                             <td th:text="${room.maxKapasitas}">Max Capacity</td>
@@ -73,7 +73,7 @@
                         <div class="modal-body">
                             <!-- Room ID -->
                             <div class="form-group">
-                                <label for="id">Room ID</label>
+                                <label for="id">Room Id</label>
                                 <input type="text" class="form-control" id="id" name="id" required
                                         placeholder="Room Id">
                             </div>
